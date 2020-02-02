@@ -1,0 +1,34 @@
+{
+  "name": "@karcass/template-reducer",
+  "version": "0.0.1",
+  "description": "Abstract base class for template reducing according to user preferences",
+  "main": "lib/index.js",
+  "scripts": {
+    "build": "rm -Rf lib && tsc",
+    "watch": "rm -Rf lib && tsc -w",
+    "lint": "eslint -c .eslintrc.json --ext .ts src",
+    "test": "mocha lib/index.test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/karcass-ts/template-reducer.git"
+  },
+  "keywords": [
+    "karcass",
+    "template"
+  ],
+  "author": "Valeriy Shibanov <shibaon@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/karcass-ts/template-reducer/issues"
+  },
+  "homepage": "https://github.com/karcass-ts/template-reducer#readme",
+  "devDependencies": {
+    "@types/jest": "^25.1.1",
+    "@typescript-eslint/eslint-plugin": "^2.18.0",
+    "@typescript-eslint/parser": "^2.18.0",
+    "eslint": "^6.8.0",
+    "jest": "^25.1.0",
+    "typescript": "^3.7.5"
+  }
+}
