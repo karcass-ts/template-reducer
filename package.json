@@ -7,7 +7,7 @@
     "build": "rm -Rf lib && tsc",
     "watch": "rm -Rf lib && tsc -w",
     "lint": "eslint -c .eslintrc.json --ext .ts src",
-    "test": "mocha lib/index.test.js"
+    "test": "jest --config=jest.config.json"
   },
   "repository": {
     "type": "git",
