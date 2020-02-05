@@ -1,44 +1,46 @@
-export type BasicInstallationConfig = {
-    name: string
-    tabSize: number
-    semicolon: boolean
-    doubleQuotemark: boolean
+export enum ConfigParameterType {
+    string = 'string',
+    number = 'number',
+    radio = 'radio',
+    checkbox = 'checkbox',
+    confirm = 'confirm',
 }
 
 type ConfigNumberParameter = {
     name: string
     description: string
-    type: 'number'
+    type: ConfigParameterType.number
     default?: number
 }
 type ConfigRadioParameter = {
     name: string
     description: string
-    type: 'radio'
+    type: ConfigParameterType.radio
     choices: { value: string|number, description: string, checked?: boolean }[]
 }
 type ConfigCheckboxParameter = {
     name: string
     description: string
-    type: 'checkbox'
+    type: ConfigParameterType.checkbox
     choices: { value: string|number, description: string, checked?: boolean }[]
 }
 type ConfigConfirmParameter = {
     name: string
     description: string
-    type: 'confirm'
+    type: ConfigParameterType.confirm
     default?: boolean
 }
 type ConfigStringParameter = {
     name: string
     description: string
-    type: 'string'
+    type: ConfigParameterType.string
     default?: string
 }
 
 export type ConfigParameter =
     ConfigNumberParameter|ConfigRadioParameter|ConfigCheckboxParameter|ConfigConfirmParameter|ConfigStringParameter
 
-export type ConfigParametersResult = (ConfigParameter|((config: BasicInstallationConfig) => Promise<ConfigParameter|undefined>))[]
+export type ConfigParametersResult =
+    (ConfigParameter | ((config: Record<string, any>) => Promise<ConfigParametersResult|ConfigParameter|undefined>))[]
 
-export type ReplaceFileContentItem = { filename: string, replacer: (content: string) => Promise<string> }
+export type ReplaceFileContentItem = { filename?: string|RegExp, replacer: (content: string, filename: string) => Promise<string> }

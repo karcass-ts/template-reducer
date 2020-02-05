@@ -1,13 +1,15 @@
 {
   "name": "@karcass/template-reducer",
-  "version": "0.0.1",
+  "version": "0.0.13",
   "description": "Abstract base class for template reducing according to user preferences",
   "main": "lib/index.js",
   "scripts": {
     "build": "rm -Rf lib && tsc",
     "watch": "rm -Rf lib && tsc -w",
     "lint": "eslint -c .eslintrc.json --ext .ts src",
-    "test": "jest --config=jest.config.json"
+    "test": "jest --config=jest.config.json",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm run lint && npm run test"
   },
   "repository": {
     "type": "git",
@@ -25,6 +27,7 @@
   "homepage": "https://github.com/karcass-ts/template-reducer#readme",
   "devDependencies": {
     "@types/jest": "^25.1.1",
+    "@types/node": "^13.7.0",
     "@typescript-eslint/eslint-plugin": "^2.18.0",
     "@typescript-eslint/parser": "^2.18.0",
     "eslint": "^6.8.0",

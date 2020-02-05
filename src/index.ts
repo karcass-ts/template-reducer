@@ -1,3 +1,7 @@
 export * from './types'
 export * from './TemplateReducerInterface'
 export { AbstractTemplateReducer } from './AbstractTemplateReducer'
+export * from './utils/getImportLines'
+export * from './utils/removeCodeBlocks'
+export * from './utils/removeImports'
+export * from './utils/replaceBlock'

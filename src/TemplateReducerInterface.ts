@@ -1,10 +1,12 @@
-import { ConfigParametersResult, BasicInstallationConfig, ReplaceFileContentItem } from './types'
+import { ConfigParametersResult, ReplaceFileContentItem } from './types'
 
 export interface TemplateReducerInterface {
     getConfigParameters(): Promise<ConfigParametersResult>
-    setConfig(config: BasicInstallationConfig): unknown
+    getConfig(): Record<string, any>
+    setConfig(config: Record<string, any>): void
     getDirectoriesForRemove(): Promise<string[]>
     getFilesForRemove(): Promise<string[]>
     getDependenciesForRemove(): Promise<string[]>
     getFilesContentReplacers(): Promise<ReplaceFileContentItem[]>
+    finish(): Promise<void>
 }

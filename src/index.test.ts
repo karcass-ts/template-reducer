@@ -1,18 +1,8 @@
-import { AbstractTemplateReducer } from './AbstractTemplateReducer'
-import { BasicInstallationConfig } from './types'
+import { removeImports } from './utils/removeImports'
+import { removeCodeBlocks } from './utils/removeCodeBlocks'
 
-class TestTemplateReducer extends AbstractTemplateReducer {
-    public setConfig = (config: BasicInstallationConfig) => this.config = config
-    public getConfigParameters = async () => []
-    public getDirectoriesForRemove = async () => []
-    public getFilesForRemove = async () => []
-    public getDependenciesForRemove = async () => []
-    public getFilesContentReplacers = async () => []
-}
-
-test('AbstractTemplateReducer::removeImports removes imports ok', () => {
-    const reducer = new TestTemplateReducer()
-    const content = (reducer as any).removeImports(
+test('removeImports removes imports ok', () => {
+    const content = removeImports(
         [
             'import { SomeImport, FirstTestImport as SomeSecondImport } from "./some-import"',
             'import TestDefaultImport, {FirstTestImport, SecondTestImportTail, SecondTestImport,',
@@ -43,8 +33,7 @@ test('AbstractTemplateReducer::removeImports removes imports ok', () => {
     ].join('\n'))
 })
 test('AbstractTemplateReducer::removeCodeBlocks', () => {
-    const reducer = new TestTemplateReducer()
-    const content = (reducer as any).removeCodeBlocks(`
+    const content = removeCodeBlocks(`
         export class Application {
             private container = new Container();
             private console = new Cli();
