@@ -1,6 +1,16 @@
 import { removeImports } from './utils/removeImports'
 import { removeCodeBlocks } from './utils/removeCodeBlocks'
+import { AbstractTemplateReducer } from './AbstractTemplateReducer'
 
+test('Creating of TemplateInstance implementation is ok', () => {
+    class TemplateReducer extends AbstractTemplateReducer<{ name: string }> {
+        public config = {
+            name: 'dsd',
+        }
+    }
+    const instance = new TemplateReducer()
+    instance.setConfig({ name: 'dsdd' })
+})
 test('removeImports removes imports ok', () => {
     const content = removeImports(
         [

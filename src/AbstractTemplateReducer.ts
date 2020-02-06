@@ -1,14 +1,14 @@
 import { TemplateReducerInterface } from './TemplateReducerInterface'
 import { ConfigParametersResult, ReplaceFileContentItem } from './types'
 
-export abstract class AbstractTemplateReducer implements TemplateReducerInterface {
-    protected config: Record<string, any> = {}
+export abstract class AbstractTemplateReducer<Config extends Record<string, any>> implements TemplateReducerInterface {
+    protected config: Config = {} as any
 
     public getConfig() {
         return this.config
     }
 
-    public setConfig(config: Record<string, any>) {
+    public setConfig(config: Partial<Config>) {
         this.config = {
             ...this.config,
             ...config,
@@ -37,6 +37,10 @@ export abstract class AbstractTemplateReducer implements TemplateReducerInterfac
 
     public async finish(): Promise<void> {
         return undefined
+    }
+
+    public async getTestConfigSet(): Promise<Config[]> {
+        return []
     }
 
 }

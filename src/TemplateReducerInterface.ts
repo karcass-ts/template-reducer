@@ -9,4 +9,5 @@ export interface TemplateReducerInterface {
     getDependenciesForRemove(): Promise<string[]>
     getFilesContentReplacers(): Promise<ReplaceFileContentItem[]>
     finish(): Promise<void>
+    getTestConfigSet(): Promise<Record<string, any>[]>
 }
