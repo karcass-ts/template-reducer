@@ -1,6 +1,6 @@
 {
   "name": "@karcass/template-reducer",
-  "version": "0.0.17",
+  "version": "0.0.21",
   "description": "Abstract base class for template reducing according to user preferences",
   "main": "lib/index.js",
   "scripts": {

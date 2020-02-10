@@ -8,7 +8,7 @@ test('Creating of TemplateInstance implementation is ok', () => {
             name: 'dsd',
         }
     }
-    const instance = new TemplateReducer()
+    const instance = new TemplateReducer('appname', '/foo/bar')
     instance.setConfig({ name: 'dsdd' })
 })
 test('removeImports removes imports ok', () => {
